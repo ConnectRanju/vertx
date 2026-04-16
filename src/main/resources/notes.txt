@@ -1,0 +1,31 @@
+
+http://localhost:8080/order
+
+Process request flow:
+Client calls:
+http://localhost:8080/order
+OrderVerticle:
+Receives request
+Sends message to Event Bus
+PaymentVerticle:
+Listens on "payment.process"
+Processes asynchronously
+Sends reply
+Response returned to client
+
+
+http://localhost:8080/order
+{
+    "customerId": 1,
+    "items": [
+        {
+            "productId": 1,
+            "quantity": 2
+        },
+        {
+            "productId": 2,
+            "quantity": 1
+        }
+    ]
+}
+
